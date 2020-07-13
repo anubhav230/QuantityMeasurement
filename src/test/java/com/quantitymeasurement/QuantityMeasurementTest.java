@@ -135,4 +135,11 @@ public class QuantityMeasurementTest {
         Assert.assertTrue(result);
     }
 
+    @Test
+    public void givenFeetAndYard_ShouldBeEqual() {
+        Unit feet = new Unit(Unit.Type.FEET,3.0);
+        Unit yard = new Unit(Unit.Type.YARD,1.0);
+        boolean result = yard.unitConversion(feet);
+        Assert.assertTrue(result);
+    }
 }
