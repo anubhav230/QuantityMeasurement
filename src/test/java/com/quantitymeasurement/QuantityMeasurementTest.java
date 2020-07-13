@@ -42,10 +42,10 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenReferences_ShouldCompareType() {
+    public void givenDifferentReferences_FromSameType_ShouldNotEqual() {
         Unit feet1 = new Unit(Unit.Type.FEET,2.0);
         Unit feet2 = new Unit(Unit.Type.FEET,2.0);
-        Assert.assertEquals(feet1, feet2);
+        Assert.assertNotEquals(feet1, equals(feet2));
     }
 
     @Test
@@ -94,4 +94,5 @@ public class QuantityMeasurementTest {
         Unit feet2 = new Unit(Unit.Type.FEET,2.0);
         Assert.assertNotEquals(feet1, feet2);
     }
+
 }
