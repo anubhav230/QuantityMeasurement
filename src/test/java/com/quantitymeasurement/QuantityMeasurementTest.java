@@ -49,9 +49,16 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenSameUnit_ShouldReturnTrue2() {
+    public void givenDifferentType_ShouldNotEqual() {
         Unit feet1 = new Unit(Unit.Type.FEET,0.0);
         Unit feet2 = new Unit(Unit.Type.INCH,0.0);
+        Assert.assertNotEquals(feet1, feet2);
+    }
+
+    @Test
+    public void givenDifferentValueOfSameUnit_ShouldNotEqual() {
+        Unit feet1 = new Unit(Unit.Type.FEET,2.0);
+        Unit feet2 = new Unit(Unit.Type.FEET,1.0);
         Assert.assertNotEquals(feet1, feet2);
     }
 
