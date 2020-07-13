@@ -80,10 +80,18 @@ public class QuantityMeasurementTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void givenSameInchReference_ShouldBeEqual() {
         Unit feet1 = new Unit(Unit.Type.INCH,2.0);
         Unit feet2 = new Unit(Unit.Type.INCH,2.0);
         Assert.assertEquals(feet1, feet2);
+    }
+
+    @Test
+    public void givenDifferentFeetAndInchType_ShouldNotBeEqual() {
+        Unit feet1 = new Unit(Unit.Type.INCH,2.0);
+        Unit feet2 = new Unit(Unit.Type.FEET,2.0);
+        Assert.assertNotEquals(feet1, feet2);
     }
 }
