@@ -2,7 +2,8 @@ package com.quantitymeasurement.services;
 
 public class Unit {
 
-    public int FEET_TO_YARD = 3;
+    public int YARD_TO_FEET = 3;
+    public int YARD_TO_INCH = 36;
 
     public enum Type {
         FEET, INCH, YARD
@@ -22,9 +23,13 @@ public class Unit {
         this.value = value;
     }
 
-    public double unitConversion(Unit feet) {
-      double result = value * FEET_TO_YARD;
-      return result;
+    public boolean unitConversion(Unit unit) {
+        if (this.type.equals(Type.YARD) && unit.type.equals(Type.FEET)) {
+            return Double.compare(this.value * YARD_TO_FEET, unit.value) == 0;
+        }else if (this.type.equals(Type.YARD) && unit.type.equals(Type.INCH)) {
+            return Double.compare(this.value * YARD_TO_INCH, unit.value) == 0;
+        }return false;
+
     }
 
     @Override
