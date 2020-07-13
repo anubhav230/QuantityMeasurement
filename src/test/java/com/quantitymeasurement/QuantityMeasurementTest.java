@@ -1,6 +1,6 @@
 package com.quantitymeasurement;
 
-import com.quantitymeasurement.services.Feet;
+import com.quantitymeasurement.services.Unit;
 import com.quantitymeasurement.services.QuantityMeasurement;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,16 +18,16 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenSameUnit_ShouldReturnTrue() {
-        Feet feet1 = new Feet(0.0);
-        Feet feet2 = new Feet(0.0);
+        Unit feet1 = new Unit(Unit.Type.FEET,0.0);
+        Unit feet2 = new Unit(Unit.Type.FEET,0.0);
         Assert.assertEquals(feet1, feet2);
     }
 
     @Test
     public void givenSameUnit_ShouldReturnNotEqual() throws NullPointerException {
         try {
-            Feet unit1 = new Feet(0.0);
-            Feet unit2 = new Feet(null);
+            Unit unit1 = new Unit(Unit.Type.FEET,0.0);
+            Unit unit2 = new Unit(Unit.Type.FEET,null);
             Assert.assertEquals(unit1, unit2);
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -36,8 +36,24 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenReferences_ShouldCompareReference() {
-        Feet feet1 = new Feet(2.0);
-        Feet feet2 = new Feet(2.0);
+        Unit feet1 = new Unit(Unit.Type.FEET,2.0);
+        Unit feet2 = new Unit(Unit.Type.FEET,2.0);
         Assert.assertEquals(feet1, feet2);
     }
+
+    @Test
+    public void givenReferences_ShouldCompareType() {
+        Unit feet1 = new Unit(Unit.Type.FEET,2.0);
+        Unit feet2 = new Unit(Unit.Type.FEET,2.0);
+        Assert.assertEquals(feet1, feet2);
+    }
+
+    @Test
+    public void givenSameUnit_ShouldReturnTrue2() {
+        Unit feet1 = new Unit(Unit.Type.FEET,0.0);
+        Unit feet2 = new Unit(Unit.Type.INCH,0.0);
+        Assert.assertNotEquals(feet1, feet2);
+    }
+
+
 }
