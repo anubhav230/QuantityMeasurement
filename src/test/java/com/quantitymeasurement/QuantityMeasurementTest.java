@@ -24,7 +24,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenSameUnit_ShouldReturnNotEqual() throws NullPointerException {
+    public void givenSameUnitGFeet_ShouldThrowException() {
         try {
             Unit unit1 = new Unit(Unit.Type.FEET,0.0);
             Unit unit2 = new Unit(Unit.Type.FEET,null);
@@ -70,4 +70,20 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(feet1, feet2);
     }
 
+    @Test
+    public void givenSameUnitInch_ShouldThrowException() {
+        try {
+            Unit unit1 = new Unit(Unit.Type.INCH,0.0);
+            Unit unit2 = new Unit(Unit.Type.INCH,null);
+            Assert.assertEquals(unit1, unit2);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void givenSameInchReference_ShouldBeEqual() {
+        Unit feet1 = new Unit(Unit.Type.INCH,2.0);
+        Unit feet2 = new Unit(Unit.Type.INCH,2.0);
+        Assert.assertEquals(feet1, feet2);
+    }
 }

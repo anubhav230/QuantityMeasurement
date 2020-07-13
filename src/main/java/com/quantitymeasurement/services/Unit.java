@@ -6,6 +6,9 @@ public class Unit {
         FEET,INCH
     }
 
+    public Unit() {
+    }
+
     double value;
     Type type;
 
