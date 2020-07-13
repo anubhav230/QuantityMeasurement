@@ -2,6 +2,8 @@ package com.quantitymeasurement.services;
 
 public class Unit {
 
+
+
     public enum Type {
         FEET, INCH, YARD
     }
@@ -18,6 +20,10 @@ public class Unit {
     public Unit(Type type, Double value) {
         this.type = type;
         this.value = value;
+    }
+
+    public boolean unitConversion(Unit feet) {
+        return true;
     }
 
     @Override

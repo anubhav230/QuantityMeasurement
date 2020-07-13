@@ -65,17 +65,17 @@ public class QuantityMeasurementTest {
     //test case for inch
     @Test
     public void givenSameInch_ShouldBeEqual() {
-        Unit feet1 = new Unit(Unit.Type.INCH,1.0);
-        Unit feet2 = new Unit(Unit.Type.INCH,1.0);
-        Assert.assertEquals(feet1, feet2);
+        Unit inch1 = new Unit(Unit.Type.INCH,1.0);
+        Unit inch2 = new Unit(Unit.Type.INCH,1.0);
+        Assert.assertEquals(inch1, inch2);
     }
 
     @Test
     public void givenSameUnitInch_ShouldThrowException() {
         try {
-            Unit unit1 = new Unit(Unit.Type.INCH,0.0);
-            Unit unit2 = new Unit(Unit.Type.INCH,null);
-            Assert.assertEquals(unit1, unit2);
+            Unit inch1 = new Unit(Unit.Type.INCH,0.0);
+            Unit inch2 = new Unit(Unit.Type.INCH,null);
+            Assert.assertEquals(inch1, inch2);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -83,16 +83,23 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenSameInchReference_ShouldBeEqual() {
-        Unit feet1 = new Unit(Unit.Type.INCH,2.0);
-        Unit feet2 = new Unit(Unit.Type.INCH,2.0);
-        Assert.assertEquals(feet1, feet2);
+        Unit inch1 = new Unit(Unit.Type.INCH,2.0);
+        Unit inch2 = new Unit(Unit.Type.INCH,2.0);
+        Assert.assertEquals(inch1, inch2);
     }
 
     @Test
     public void givenDifferentFeetAndInchType_ShouldNotBeEqual() {
-        Unit feet1 = new Unit(Unit.Type.INCH,2.0);
-        Unit feet2 = new Unit(Unit.Type.FEET,2.0);
-        Assert.assertNotEquals(feet1, feet2);
+        Unit feet = new Unit(Unit.Type.INCH,2.0);
+        Unit inch = new Unit(Unit.Type.FEET,2.0);
+        Assert.assertNotEquals(feet, inch);
     }
 
+    @Test
+    public void givenThreeFeetAndOneYard_ShouldBeEqual() {
+        Unit feet = new Unit(Unit.Type.FEET,3.0);
+        Unit yard = new Unit(Unit.Type.YARD,1.0);
+        boolean result = yard.unitConversion(feet);
+        Assert.assertTrue(result);
+    }
 }
