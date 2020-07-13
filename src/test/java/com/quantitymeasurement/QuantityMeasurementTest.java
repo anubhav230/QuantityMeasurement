@@ -101,4 +101,11 @@ public class QuantityMeasurementTest {
         double result = yard.unitConversion(yard);
         Assert.assertEquals(3,result,0.0);
     }
+
+    @Test
+    public void givenOneFeetAndOneYard_AreNotEqual() {
+        Unit yard = new Unit(Unit.Type.YARD,1.0);
+        double result = yard.unitConversion(yard);
+        Assert.assertNotEquals(1,result,0.0);
+    }
 }
