@@ -62,5 +62,12 @@ public class QuantityMeasurementTest {
         Assert.assertNotEquals(feet1, feet2);
     }
 
+    //test case for inch
+    @Test
+    public void givenSameInch_ShouldBeEqual() {
+        Unit feet1 = new Unit(Unit.Type.INCH,1.0);
+        Unit feet2 = new Unit(Unit.Type.INCH,1.0);
+        Assert.assertEquals(feet1, feet2);
+    }
 
 }
