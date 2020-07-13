@@ -2,7 +2,7 @@ package com.quantitymeasurement.services;
 
 public class Unit {
 
-
+    public int FEET_TO_YARD = 3;
 
     public enum Type {
         FEET, INCH, YARD
@@ -22,8 +22,9 @@ public class Unit {
         this.value = value;
     }
 
-    public boolean unitConversion(Unit feet) {
-        return true;
+    public double unitConversion(Unit feet) {
+      double result = value * FEET_TO_YARD;
+      return result;
     }
 
     @Override
