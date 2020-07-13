@@ -126,4 +126,13 @@ public class QuantityMeasurementTest {
         boolean result = yard.unitConversion(inch);
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void givenInchAndYard2_ShouldBeEqualAfterConverting() {
+        Unit inch = new Unit(Unit.Type.INCH,36.0);
+        Unit yard = new Unit(Unit.Type.YARD,1.0);
+        boolean result = yard.unitConversion(inch);
+        Assert.assertTrue(result);
+    }
+
 }
