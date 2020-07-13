@@ -33,4 +33,11 @@ public class QuantityMeasurementTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void givenReferences_ShouldCompareReference() {
+        Feet feet1 = new Feet(2.0);
+        Feet feet2 = new Feet(2.0);
+        Assert.assertEquals(feet1, feet2);
+    }
 }
