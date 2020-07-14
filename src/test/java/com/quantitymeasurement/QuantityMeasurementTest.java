@@ -149,4 +149,12 @@ public class QuantityMeasurementTest {
         }
     }
 
+    @Test
+    public void givenTwoReferencesOfSameClass_ShouldCompareReference() {
+        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        UnitMeasurement unitMeasurement2 = new UnitMeasurement();
+        Assert.assertNotEquals(unitMeasurement, unitMeasurement2);
+        Assert.assertEquals(unitMeasurement, unitMeasurement);
+    }
+
 }
