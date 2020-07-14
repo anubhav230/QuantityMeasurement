@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.quantitymeasurement.QuantityMeasurementTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-14T17:38:59" hostname="LAPTOP-GT6OG951" time="0.002">
+<testsuite name="com.quantitymeasurement.QuantityMeasurementTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-14T17:46:03" hostname="LAPTOP-GT6OG951" time="0.001">
   <properties/>
-  <testcase name="givenEqualCentimeter_ShouldBeEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.002"/>
+  <testcase name="givenEqualCentimeter_ShouldBeEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

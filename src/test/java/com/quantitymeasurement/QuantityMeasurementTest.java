@@ -165,4 +165,13 @@ public class QuantityMeasurementTest {
     }
 
 
+    @Test
+    public void givenEqualCentimeter_ShouldBeEqual() throws QuantityMeasurementException {
+        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        double result = unitMeasurement.unitConversion(LengthOfUnit.CENTIMETER,2.0);
+        double result2 = unitMeasurement.unitConversion(LengthOfUnit.CENTIMETER,2.0);
+        Assert.assertEquals(result, result2, 0.0);
+    }
+
+
 }
