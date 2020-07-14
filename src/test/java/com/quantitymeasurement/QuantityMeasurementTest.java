@@ -131,4 +131,12 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(result, result2,0.0);
     }
 
+    @Test
+    public void givenTwoInchAndFiveCentimeter_ShouldBeEqual() throws QuantityMeasurementException {
+        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        double result = unitMeasurement.unitConversion(LengthOfUnit.INCH,2.0);
+        double result2 = unitMeasurement.unitConversion(LengthOfUnit.CENTIMETER,5.0);
+        Assert.assertEquals(result, result2, 0.1);
+    }
+
 }
