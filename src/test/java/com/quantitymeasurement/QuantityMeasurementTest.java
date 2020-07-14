@@ -37,7 +37,7 @@ public class QuantityMeasurementTest {
 
 
     @Test
-    public void givenDifferentType_ShouldNotEqual() {
+    public void givenSameType_ShouldNotEqual() {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         UnitMeasurement unitMeasurement1 = new UnitMeasurement();
         Assert.assertEquals(unitMeasurement.getClass(), unitMeasurement1.getClass());
@@ -137,6 +137,16 @@ public class QuantityMeasurementTest {
         double result = unitMeasurement.unitConversion(LengthOfUnit.INCH,2.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.CENTIMETER,5.0);
         Assert.assertEquals(result, result2, 0.1);
+    }
+
+    @Test
+    public void givenNullValueForCentimeter_ShouldThrowQuantityMeasurementException() {
+        try {
+            UnitMeasurement unitMeasurement = new UnitMeasurement();
+            unitMeasurement.unitConversion(LengthOfUnit.CENTIMETER,null);
+        } catch (QuantityMeasurementException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
