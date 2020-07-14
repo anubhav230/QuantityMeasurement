@@ -157,4 +157,12 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(unitMeasurement, unitMeasurement);
     }
 
+    @Test
+    public void givenDifferentTypeOfClass_ShouldNotEqual() {
+        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        String string = "";
+        Assert.assertNotEquals(unitMeasurement.getClass(), string.getClass());
+    }
+
+
 }
