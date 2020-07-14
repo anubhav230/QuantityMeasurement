@@ -184,5 +184,16 @@ public class QuantityMeasurementTest {
         Assert.assertTrue(result3);
     }
 
+    @Test
+    public void givenEqualCentimeterNegativeValue_ShouldThrowQuantityMeasurementException() {
+        try {
+            UnitMeasurement unitMeasurement = new UnitMeasurement();
+            unitMeasurement.unitConversion(LengthOfUnit.CENTIMETER,-2.0);
+        } catch (QuantityMeasurementException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
 
 }

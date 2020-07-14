@@ -5,17 +5,20 @@ import com.quantitymeasurement.exception.QuantityMeasurementException;
 public class UnitMeasurement {
 
     public double unitConversion(LengthOfUnit unit, Double value) throws QuantityMeasurementException {
-        try {
-            double result = value * unit.value;
-            return result;
-        } catch (NullPointerException e) {
-            throw new QuantityMeasurementException("Null value", QuantityMeasurementException.ExceptionType.NULL_VALUE);
+        if (value < 0)
+            throw new QuantityMeasurementException("enter positive value", QuantityMeasurementException.ExceptionType.NEGATIVE_VALUE);
+        else {
+            try {
+                double result = value * unit.value;
+                return result;
+            } catch (NullPointerException e) {
+                throw new QuantityMeasurementException("Null value", QuantityMeasurementException.ExceptionType.NULL_VALUE);
+            }
         }
-
     }
 
     public boolean compare(double value, double value2) {
-        return Double.compare(value,value2) == 0;
+        return Double.compare(value, value2) == 0;
     }
 
     @Override
