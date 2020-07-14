@@ -14,7 +14,8 @@ public class QuantityMeasurementTest {
        UnitMeasurement unitMeasurement = new UnitMeasurement();
        double result = unitMeasurement.unitConversion(LengthOfUnit.FEET,0.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.FEET,0.0);
-        Assert.assertEquals(result, result2,0.0);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertTrue(result3);
     }
 
     @Test
@@ -48,6 +49,7 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result1 = unitMeasurement.unitConversion(LengthOfUnit.FEET,1.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.FEET,2.0);
+
         Assert.assertNotEquals(result1, result2,0.0);
     }
 
@@ -57,7 +59,8 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result = unitMeasurement.unitConversion(LengthOfUnit.INCH,0.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.INCH,0.0);
-        Assert.assertEquals(result, result2,0.0);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertTrue(result3);
     }
 
     @Test
@@ -88,7 +91,8 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.FEET,3.0);
         double result = unitMeasurement.unitConversion(LengthOfUnit.YARD,1.0);
-        Assert.assertEquals(result, result2,0.0);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertTrue(result3);
     }
 
     @Test
@@ -96,7 +100,8 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result = unitMeasurement.unitConversion(LengthOfUnit.FEET,3.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.YARD,1.0);
-        Assert.assertEquals(result, result2,0.0);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertTrue(result3);
     }
 
     @Test
@@ -104,7 +109,8 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result = unitMeasurement.unitConversion(LengthOfUnit.INCH,1.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.YARD,1.0);
-        Assert.assertNotEquals(result,result2,0.0);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertFalse(result3);
     }
 
     @Test
@@ -112,7 +118,8 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result = unitMeasurement.unitConversion(LengthOfUnit.YARD,1.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.INCH,36.0);
-        Assert.assertEquals(result, result2,0.0);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertTrue(result3);
     }
 
     @Test
@@ -120,7 +127,8 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result = unitMeasurement.unitConversion(LengthOfUnit.INCH,36.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.YARD,1.0);
-        Assert.assertEquals(result, result2,0.0);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertTrue(result3);
     }
 
     @Test
@@ -128,7 +136,8 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result = unitMeasurement.unitConversion(LengthOfUnit.YARD,1.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.FEET,3.0);
-        Assert.assertEquals(result, result2,0.0);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertTrue(result3);
     }
 
     @Test
@@ -136,7 +145,8 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result = unitMeasurement.unitConversion(LengthOfUnit.INCH,2.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.CENTIMETER,5.0);
-        Assert.assertEquals(result, result2, 0.1);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertTrue(result3);
     }
 
     @Test
@@ -170,7 +180,8 @@ public class QuantityMeasurementTest {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         double result = unitMeasurement.unitConversion(LengthOfUnit.CENTIMETER,2.0);
         double result2 = unitMeasurement.unitConversion(LengthOfUnit.CENTIMETER,2.0);
-        Assert.assertEquals(result, result2, 0.0);
+        boolean result3 = unitMeasurement.compare(result, result2);
+        Assert.assertTrue(result3);
     }
 
 

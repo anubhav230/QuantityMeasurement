@@ -14,6 +14,10 @@ public class UnitMeasurement {
 
     }
 
+    public boolean compare(double value, double value2) {
+        return Double.compare(value,value2) == 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
