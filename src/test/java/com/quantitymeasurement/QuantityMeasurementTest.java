@@ -218,4 +218,13 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(unitQuantity, unitQuantity1);
     }
 
+
+    @Test
+    public void givenOneLitreAndML_WhenEqual_ShouldReturnEqual() throws QuantityMeasurementException {
+        UnitQuantity value1 = new UnitQuantity(1.0, LITRES);
+        UnitQuantity value2 = new UnitQuantity(1000.0, MILLILITERS);
+        Assert.assertEquals(value1, value2);
+    }
+
+
 }
