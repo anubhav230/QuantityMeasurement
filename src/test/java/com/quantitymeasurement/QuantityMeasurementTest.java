@@ -1,25 +1,27 @@
 package com.quantitymeasurement;
 
 import com.quantitymeasurement.exception.QuantityMeasurementException;
-import com.quantitymeasurement.services.Unit;
 import com.quantitymeasurement.services.UnitMeasurement;
+import com.quantitymeasurement.services.UnitQuantity;
 import org.junit.Assert;
 import org.junit.Test;
+
+import static com.quantitymeasurement.services.Unit.*;
 
 public class QuantityMeasurementTest {
 
     @Test
-    public void givenSameUnit_WhenEqual_ShouldReturnTrue() {
-       UnitMeasurement unitMeasurement = new UnitMeasurement(Unit.FEET,0.0);
-        UnitMeasurement unitMeasurement2 = new UnitMeasurement(Unit.FEET,0.0);
-        Assert.assertEquals(unitMeasurement,unitMeasurement2);
+    public void givenSameUnit_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
+        UnitQuantity feet1 = new UnitQuantity(1.0, FEET);
+        UnitQuantity feet2 = new UnitQuantity(12.0, INCH);
+        Assert.assertEquals(feet1, feet2);
     }
 
+
     @Test
-    public void givenNullValue_ShouldThrowException(){
+    public void givenNullValue_ShouldThrowException() {
         try {
-            UnitMeasurement unitMeasurement = new UnitMeasurement();
-            unitMeasurement.unitConversion(Unit.FEET,null);
+            UnitQuantity feet2 = new UnitQuantity(null, FEET);
         } catch (QuantityMeasurementException e) {
             System.out.println(e.getMessage());
         }
@@ -35,41 +37,40 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenSameType_WhenSameType_ShouldNotEqual() {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-        UnitMeasurement unitMeasurement1 = new UnitMeasurement();
-        Assert.assertEquals(unitMeasurement.getClass(), unitMeasurement1.getClass());
+        UnitMeasurement type1 = new UnitMeasurement();
+        Double type2 = 0.0;
+        Assert.assertNotEquals(type1, type2);
     }
 
     @Test
-    public void givenDifferentValueOfSameUnit_WhenNotEqual_ShouldNotEqual() {
-        UnitMeasurement result1 = new UnitMeasurement(Unit.FEET,0.0);
-        UnitMeasurement result2 = new UnitMeasurement(Unit.FEET,1.0);
-        Assert.assertNotEquals(result1, result2);
+    public void givenDifferentValueOfSameUnit_WhenNotEqual_ShouldNotEqual() throws QuantityMeasurementException {
+        UnitQuantity feet1 = new UnitQuantity(1.0, FEET);
+        UnitQuantity feet2 = new UnitQuantity(2.0, FEET);
+        Assert.assertNotEquals(feet1, feet2);
     }
 
     //test case for inch
 
     @Test
-    public void givenZeroInch_WhenEqual_ShouldBeEqual() {
-        UnitMeasurement result1 = new UnitMeasurement(Unit.INCH,0.0);
-        UnitMeasurement result2 = new UnitMeasurement(Unit.INCH,0.0);
-        Assert.assertEquals(result1, result2);
+    public void givenZeroInch_WhenEqual_ShouldBeEqual() throws QuantityMeasurementException {
+        UnitQuantity feet1 = new UnitQuantity(0.0, INCH);
+        UnitQuantity feet2 = new UnitQuantity(0.0, INCH);
+        Assert.assertEquals(feet1, feet2);
     }
 
     @Test
-    public void givenSameInch_ShouldBeEqual() {
-        UnitMeasurement result1 = new UnitMeasurement(Unit.INCH,0.0);
-        UnitMeasurement result2 = new UnitMeasurement(Unit.INCH,1.0);
-        Assert.assertNotEquals(result1, result2);
+    public void givenSameInch_ShouldBeEqual() throws QuantityMeasurementException {
+        UnitQuantity feet1 = new UnitQuantity(1.0, INCH);
+        UnitQuantity feet2 = new UnitQuantity(0.0, INCH);
+        Assert.assertNotEquals(feet1, feet2);
     }
 
     @Test
     public void givenNullValue_ShouldThrowQuantityMeasurementException() {
         try {
-            UnitMeasurement unitMeasurement = new UnitMeasurement();
-            unitMeasurement.unitConversion(Unit.INCH,null);
+            UnitQuantity feet2 = new UnitQuantity(null, INCH);
         } catch (QuantityMeasurementException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -88,130 +89,125 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenThreeFeetAndOneYard_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result2 = unitMeasurement.unitConversion(Unit.FEET,3.0);
-        double result = unitMeasurement.unitConversion(Unit.YARD,1.0);
-        boolean result3 = unitMeasurement.compare(result, result2);
-        Assert.assertTrue(result3);
+        UnitQuantity feet1 = new UnitQuantity(3.0, FEET);
+        UnitQuantity feet2 = new UnitQuantity(1.0, YARD);
+        Assert.assertEquals(feet1, feet2);
     }
 
     @Test
     public void givenOneFeetAndOneYard_WhenEqual_ShouldReturnFalse() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result = unitMeasurement.unitConversion(Unit.FEET,1.0);
-        double result2 = unitMeasurement.unitConversion(Unit.YARD,1.0);
-        boolean result3 = unitMeasurement.compare(result, result2);
-        Assert.assertFalse(result3);
+        UnitQuantity feet1 = new UnitQuantity(3.0, FEET);
+        UnitQuantity feet2 = new UnitQuantity(1.0, YARD);
+        Assert.assertEquals(feet1, feet2);
     }
 
     @Test
-    public void givenZeroInchAndOneYard_WhenNotEqual_ShouldNotBeEqual() {
-        UnitMeasurement result1 = new UnitMeasurement(Unit.INCH,0.0);
-        UnitMeasurement result2 = new UnitMeasurement(Unit.YARD,1.0);
-        Assert.assertNotEquals(result1, result2);
+    public void givenZeroInchAndOneYard_WhenNotEqual_ShouldNotBeEqual() throws QuantityMeasurementException {
+        UnitQuantity feet1 = new UnitQuantity(0.0, INCH);
+        UnitQuantity feet2 = new UnitQuantity(0.0, YARD);
+        Assert.assertEquals(feet1, feet2);
     }
 
     @Test
     public void givenValueOfInchAndYard_WhenSameAfterConverting_ShouldBeEqualAfterConverting() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result = unitMeasurement.unitConversion(Unit.YARD,1.0);
-        double result2 = unitMeasurement.unitConversion(Unit.INCH,36.0);
-        boolean result3 = unitMeasurement.compare(result, result2);
-        Assert.assertTrue(result3);
+        UnitQuantity feet1 = new UnitQuantity(1.0, YARD);
+        UnitQuantity feet2 = new UnitQuantity(36.0, INCH);
+        Assert.assertEquals(feet1, feet2);
     }
 
     @Test
     public void givenValueOfInchAndYard2_ShouldBeEqualAfterConverting() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result = unitMeasurement.unitConversion(Unit.INCH,36.0);
-        double result2 = unitMeasurement.unitConversion(Unit.YARD,1.0);
-        boolean result3 = unitMeasurement.compare(result, result2);
-        Assert.assertTrue(result3);
+
+        UnitQuantity feet1 = new UnitQuantity(36.0, INCH);
+        UnitQuantity feet2 = new UnitQuantity(1.0, YARD);
+        Assert.assertEquals(feet1, feet2);
     }
 
     @Test
     public void givenFeetAndYard_ShouldBeEqual() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result = unitMeasurement.unitConversion(Unit.YARD,1.0);
-        double result2 = unitMeasurement.unitConversion(Unit.FEET,3.0);
-        boolean result3 = unitMeasurement.compare(result, result2);
-        Assert.assertTrue(result3);
+        UnitQuantity feet1 = new UnitQuantity(1.0, YARD);
+        UnitQuantity feet2 = new UnitQuantity(3.0, FEET);
+        Assert.assertEquals(feet1, feet2);
     }
 
     @Test
     public void givenTwoInchAndFiveCentimeter_ShouldBeEqual() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result = unitMeasurement.unitConversion(Unit.INCH,2.0);
-        double result2 = unitMeasurement.unitConversion(Unit.CENTIMETER,5.0);
-        boolean result3 = unitMeasurement.compare(result, result2);
-        Assert.assertTrue(result3);
+
+        UnitQuantity feet1 = new UnitQuantity(2.0, INCH);
+        UnitQuantity feet2 = new UnitQuantity(5.0, CENTIMETER);
+        Assert.assertEquals(feet1, feet2);
     }
 
     @Test
     public void givenNullValueForCentimeter_ShouldThrowQuantityMeasurementException() {
         try {
-            UnitMeasurement unitMeasurement = new UnitMeasurement();
-            unitMeasurement.unitConversion(Unit.CENTIMETER,null);
+            UnitQuantity feet2 = new UnitQuantity(null, CENTIMETER);
         } catch (QuantityMeasurementException e) {
             System.out.println(e.getMessage());
         }
     }
-
-    @Test
-    public void givenTwoReferencesOfSameClass_ShouldCompareReference() {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-        UnitMeasurement unitMeasurement2 = new UnitMeasurement();
-        Assert.assertNotEquals(unitMeasurement,equals(unitMeasurement2));
-    }
+//
+//    @Test
+//    public void givenTwoReferencesOfSameClass_ShouldCompareReference() {
+//        UnitMeasurement unitMeasurement = new UnitMeasurement();
+//        UnitMeasurement unitMeasurement2 = new UnitMeasurement();
+//        Assert.assertNotEquals(unitMeasurement,equals(unitMeasurement2));
+//    }
 
     @Test
     public void givenDifferentTypeOfClass_ShouldNotEqual() {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
         String string = "";
-        Assert.assertNotEquals(unitMeasurement,string);
+        Assert.assertNotEquals(unitMeasurement, string);
     }
 
     @Test
-    public void givenEqualCentimeter_ShouldBeEqual() {
-        UnitMeasurement result1 = new UnitMeasurement(Unit.CENTIMETER,0.0);
-        UnitMeasurement result2 = new UnitMeasurement(Unit.CENTIMETER,1.0);
-        Assert.assertNotEquals(result1, result2);
+    public void givenEqualCentimeter_ShouldBeEqual() throws QuantityMeasurementException {
+        UnitQuantity unitQuantity = new UnitQuantity(0.0, CENTIMETER);
+        UnitQuantity unitQuantity1 = new UnitQuantity(1.0, CENTIMETER);
+        Assert.assertNotEquals(unitQuantity, unitQuantity1);
 
     }
 
     @Test
     public void givenTwoInchAndTwoInch_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result2 = unitMeasurement.unitConversion(Unit.INCH,2.0);
-        double result1 = unitMeasurement.unitConversion(Unit.INCH,2.0);
-        double result3 = unitMeasurement.addUnit(result2, result1);
-        Assert.assertEquals(4.0,result3,0.0);
+        UnitQuantity unitQuantity = new UnitQuantity(2.0, INCH);
+        UnitQuantity unitQuantity1 = new UnitQuantity(2.0, INCH);
+
+
+        double result3 = unitMeasurement.addUnit(unitQuantity, unitQuantity1);
+        Assert.assertEquals(4.0, result3, 0.0);
     }
 
     @Test
     public void givenOneFEETAndTwoInch_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result2 = unitMeasurement.unitConversion(Unit.FEET,1.0);
-        double result1 = unitMeasurement.unitConversion(Unit.INCH,2.0);
-        double result3 = unitMeasurement.addUnit(result2, result1);
-        Assert.assertEquals(14.0,result3,0.0);
+
+        UnitQuantity unitQuantity = new UnitQuantity(1.0, FEET);
+        UnitQuantity unitQuantity1 = new UnitQuantity(2.0, INCH);
+        double result3 = unitMeasurement.addUnit(unitQuantity, unitQuantity1);
+        Assert.assertEquals(14.0, result3, 0.0);
     }
 
     @Test
     public void givenOneFEETAndOneFeet_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result2 = unitMeasurement.unitConversion(Unit.FEET,1.0);
-        double result1 = unitMeasurement.unitConversion(Unit.FEET,1.0);
-        double result3 = unitMeasurement.addUnit(result2, result1);
-        Assert.assertEquals(24.0,result3,0.0);
+
+        UnitQuantity unitQuantity = new UnitQuantity(1.0, FEET);
+        UnitQuantity unitQuantity1 = new UnitQuantity(1.0, FEET);
+        double result3 = unitMeasurement.addUnit(unitQuantity, unitQuantity1);
+        Assert.assertEquals(24.0, result3, 0.0);
     }
 
     @Test
     public void givenOneInchAndTwoPointFiveCm_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result2 = unitMeasurement.unitConversion(Unit.INCH,2.0);
-        double result1 = unitMeasurement.unitConversion(Unit.CENTIMETER,2.5);
-        double result3 = unitMeasurement.addUnit(result2, result1);
-        Assert.assertEquals(3.0,result3,0.0);
+
+
+        UnitQuantity unitQuantity = new UnitQuantity(2.0, INCH);
+        UnitQuantity unitQuantity1 = new UnitQuantity(2.5, CENTIMETER);
+        double result3 = unitMeasurement.addUnit(unitQuantity, unitQuantity1);
+        Assert.assertEquals(3.0, result3, 0.0);
     }
 }
