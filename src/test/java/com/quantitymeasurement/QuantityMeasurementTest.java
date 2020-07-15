@@ -182,9 +182,9 @@ public class QuantityMeasurementTest {
     @Test
     public void givenTwoInchAndTwoInch_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
-        double result2 = unitMeasurement.unitConversion(Unit.FEET,3.0);
-        double result1 = unitMeasurement.unitConversion(Unit.YARD,1.0);
+        double result2 = unitMeasurement.unitConversion(Unit.INCH,2.0);
+        double result1 = unitMeasurement.unitConversion(Unit.INCH,2.0);
         double result3 = unitMeasurement.addUnit(result2, result1);
-        Assert.assertEquals(true,result3);
+        Assert.assertEquals(4.0,result3,0.0);
     }
 }

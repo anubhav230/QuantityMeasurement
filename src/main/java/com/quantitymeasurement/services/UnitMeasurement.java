@@ -44,6 +44,7 @@ public class UnitMeasurement {
     }
 
     public double addUnit(double result2, double result1) {
-        return 0;
+        double result = result2 + result2;
+        return result;
     }
 }
