@@ -7,22 +7,23 @@ import java.util.Objects;
 public class UnitMeasurement {
 
     public UnitMeasurement() {
-
     }
 
-    LengthOfUnit unit;
-    Double value;
-    public UnitMeasurement(LengthOfUnit unit, Double value) {
+    private Unit unit;
+    private Double value;
+
+    public UnitMeasurement(Unit unit, Double value) {
         this.value = value;
         this.unit = unit;
     }
 
-    public double unitConversion(LengthOfUnit unit, Double value) throws QuantityMeasurementException {
+    public double unitConversion(Unit unit, Double value) throws QuantityMeasurementException {
         try {
             double result = value * unit.value;
             return result;
         } catch (NullPointerException e) {
-            throw new QuantityMeasurementException("Null value", QuantityMeasurementException.ExceptionType.NULL_VALUE);
+            throw new QuantityMeasurementException("Null value", QuantityMeasurementException
+                    .ExceptionType.NULL_VALUE);
         }
 
     }
@@ -30,6 +31,8 @@ public class UnitMeasurement {
     public boolean compare(double value, double value2) {
         return Double.compare(value, value2) == 0;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -40,5 +43,7 @@ public class UnitMeasurement {
                 Objects.equals(value, that.value);
     }
 
-
+    public double addUnit(double result2, double result1) {
+        return 0;
+    }
 }
