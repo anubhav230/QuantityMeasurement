@@ -32,6 +32,10 @@ public class UnitMeasurement {
         return Double.compare(value, value2) == 0;
     }
 
+    public double addUnit(double result2, double result1) {
+        double result = result1 + result2;
+        return result;
+    }
 
 
     @Override
@@ -43,8 +47,5 @@ public class UnitMeasurement {
                 Objects.equals(value, that.value);
     }
 
-    public double addUnit(double result2, double result1) {
-        double result = result2 + result2;
-        return result;
-    }
+
 }

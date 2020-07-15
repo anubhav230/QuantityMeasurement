@@ -194,6 +194,15 @@ public class QuantityMeasurementTest {
         double result2 = unitMeasurement.unitConversion(Unit.FEET,1.0);
         double result1 = unitMeasurement.unitConversion(Unit.INCH,2.0);
         double result3 = unitMeasurement.addUnit(result2, result1);
+        Assert.assertEquals(14.0,result3,0.0);
+    }
+
+    @Test
+    public void givenOneFEETAndOneFeet_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
+        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        double result2 = unitMeasurement.unitConversion(Unit.FEET,1.0);
+        double result1 = unitMeasurement.unitConversion(Unit.FEET,1.0);
+        double result3 = unitMeasurement.addUnit(result2, result1);
         Assert.assertEquals(24.0,result3,0.0);
     }
 }
