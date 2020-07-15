@@ -226,5 +226,15 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(value1, value2);
     }
 
+    @Test
+    public void givenGallonAndLitre_AfterAdding_shouldEqualToLitre() throws QuantityMeasurementException {
+        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        UnitQuantity value1 = new UnitQuantity(1.0, GALLON);
+        UnitQuantity value2 = new UnitQuantity(3.78, LITRES);
+        UnitQuantity value3 = new UnitQuantity(7.57, LITRES);
+        double a = value3.quantity;
+        double result3 = unitMeasurement.addUnit(value1, value2);
+        Assert.assertEquals(result3, a,0.1);
+    }
 
 }
