@@ -2,7 +2,7 @@ package com.quantitymeasurement.exception;
 
 public class QuantityMeasurementException extends Exception {
     public enum ExceptionType {
-        NULL_VALUE
+        NULL_VALUE,COMPATIBILITY_FAILURE
     }
     public ExceptionType type;
 

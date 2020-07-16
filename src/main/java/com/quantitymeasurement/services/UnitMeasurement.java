@@ -1,6 +1,12 @@
 package com.quantitymeasurement.services;
 
+import com.quantitymeasurement.exception.QuantityMeasurementException;
+import com.quantitymeasurement.models.Type;
+import com.quantitymeasurement.models.Unit;
+
 public class UnitMeasurement {
+
+
 
     public Double unitConversion(double value, Unit unit) {
         double result = value * unit.value;
@@ -15,10 +21,5 @@ public class UnitMeasurement {
     public double convertTemperature(double value) {
         double convertedValue = (value - 32.0) * (5d / 9d);
         return convertedValue;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
     }
 }

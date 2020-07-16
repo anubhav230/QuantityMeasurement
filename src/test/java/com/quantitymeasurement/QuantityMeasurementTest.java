@@ -6,7 +6,7 @@ import com.quantitymeasurement.services.UnitQuantity;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static com.quantitymeasurement.services.Unit.*;
+import static com.quantitymeasurement.models.Unit.*;
 
 public class QuantityMeasurementTest {
 
@@ -14,8 +14,8 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenSameUnit_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
-        UnitQuantity feet1 = new UnitQuantity(1.0, FEET);
-        UnitQuantity feet2 = new UnitQuantity(12.0, INCH);
+        UnitQuantity feet1 = new UnitQuantity(0.0, GALLON);
+        UnitQuantity feet2 = new UnitQuantity(0.0, INCH);
         Assert.assertEquals(feet1, feet2);
     }
 
@@ -259,10 +259,22 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(value1.quantity, value2.quantity);
     }
 
+    //ni
+    @Test
+    public void givenOneTonne2_WhenNotEqualToThousandKg_ShouldReturnFalse() {
+        try {
+            UnitQuantity value1 = new UnitQuantity(1.0, FEET);
+            UnitQuantity value2 = new UnitQuantity(1000.0, KILOGRAMS);
+            boolean result = value1.compare(value2);
+            Assert.assertTrue(result);
+        } catch (QuantityMeasurementException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     @Test
     public void givenFahrenheitAndCelsius_WhenEqual_ShouldReturnTrue() {
         double result = unitMeasurement.convertTemperature(212);
-        Assert.assertEquals(100,result,0.0);
+        Assert.assertEquals(100, result, 0.0);
     }
-
 }

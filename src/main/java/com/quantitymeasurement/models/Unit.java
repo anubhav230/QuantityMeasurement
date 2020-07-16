@@ -1,17 +1,20 @@
-package com.quantitymeasurement.services;
+package com.quantitymeasurement.models;
 
-import static com.quantitymeasurement.services.Type.*;
+import static com.quantitymeasurement.models.Type.*;
 
 public enum Unit {
 
     FEET(12.0, LENGTH), INCH(1.0, LENGTH),
-    YARD(36.0, LENGTH), CENTIMETER(1/2.5, LENGTH),
+    YARD(36.0, LENGTH), CENTIMETER(1 / 2.5, LENGTH),
 
     GALLON(3.78, VOLUME), LITRES(1.0, VOLUME),
     MILLILITERS(0.001, VOLUME),
 
     KILOGRAMS(1.0, WEIGHT), GRAMS(0.001, WEIGHT),
-    TONNE(1000.0, WEIGHT);
+    TONNE(1000.0, WEIGHT),
+
+    CELSIUS(1.8,TEMPERATURE),
+    FAHRENHEIT(1.0,TEMPERATURE);
 
     public Type type;
     public Double value;
