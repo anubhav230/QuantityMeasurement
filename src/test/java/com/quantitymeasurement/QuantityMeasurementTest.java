@@ -203,8 +203,6 @@ public class QuantityMeasurementTest {
     @Test
     public void givenOneInchAndTwoPointFiveCm_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
         UnitMeasurement unitMeasurement = new UnitMeasurement();
-
-
         UnitQuantity unitQuantity = new UnitQuantity(2.0, INCH);
         UnitQuantity unitQuantity1 = new UnitQuantity(2.5, CENTIMETER);
         double result3 = unitMeasurement.addUnit(unitQuantity, unitQuantity1);
@@ -232,9 +230,15 @@ public class QuantityMeasurementTest {
         UnitQuantity value1 = new UnitQuantity(1.0, GALLON);
         UnitQuantity value2 = new UnitQuantity(3.78, LITRES);
         UnitQuantity value3 = new UnitQuantity(7.57, LITRES);
-        double a = value3.quantity;
+        double value4 = value3.quantity;
         double result3 = unitMeasurement.addUnit(value1, value2);
-        Assert.assertEquals(result3, a,0.1);
+        Assert.assertEquals(result3, value4,0.1);
     }
 
+    @Test
+    public void givenOneKgAndGram_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
+        UnitQuantity value1 = new UnitQuantity(1.0, KILOGRAMS);
+        UnitQuantity value2 = new UnitQuantity(1000.0, GRAMS);
+        Assert.assertEquals(value1.quantity, value2.quantity);
+    }
 }
