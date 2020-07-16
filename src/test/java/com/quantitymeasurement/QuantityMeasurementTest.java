@@ -10,13 +10,14 @@ import static com.quantitymeasurement.services.Unit.*;
 
 public class QuantityMeasurementTest {
 
+    UnitMeasurement unitMeasurement = new UnitMeasurement();
+
     @Test
     public void givenSameUnit_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
         UnitQuantity feet1 = new UnitQuantity(1.0, FEET);
         UnitQuantity feet2 = new UnitQuantity(12.0, INCH);
         Assert.assertEquals(feet1, feet2);
     }
-
 
     @Test
     public void givenNullValue_ShouldThrowException() {
@@ -146,13 +147,12 @@ public class QuantityMeasurementTest {
             System.out.println(e.getMessage());
         }
     }
-//
-//    @Test
-//    public void givenTwoReferencesOfSameClass_ShouldCompareReference() {
-//        UnitMeasurement unitMeasurement = new UnitMeasurement();
-//        UnitMeasurement unitMeasurement2 = new UnitMeasurement();
-//        Assert.assertNotEquals(unitMeasurement,equals(unitMeasurement2));
-//    }
+
+    @Test
+    public void givenTwoReferencesOfSameClass_ShouldCompareReference() {
+        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        Assert.assertNotEquals(unitMeasurement, equals(unitMeasurement));
+    }
 
     @Test
     public void givenDifferentTypeOfClass_ShouldNotEqual() {
@@ -171,19 +171,14 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenTwoInchAndTwoInch_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
         UnitQuantity unitQuantity = new UnitQuantity(2.0, INCH);
         UnitQuantity unitQuantity1 = new UnitQuantity(2.0, INCH);
-
-
         double result3 = unitMeasurement.addUnit(unitQuantity, unitQuantity1);
         Assert.assertEquals(4.0, result3, 0.0);
     }
 
     @Test
     public void givenOneFEETAndTwoInch_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-
         UnitQuantity unitQuantity = new UnitQuantity(1.0, FEET);
         UnitQuantity unitQuantity1 = new UnitQuantity(2.0, INCH);
         double result3 = unitMeasurement.addUnit(unitQuantity, unitQuantity1);
@@ -192,8 +187,6 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenOneFEETAndOneFeet_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-
         UnitQuantity unitQuantity = new UnitQuantity(1.0, FEET);
         UnitQuantity unitQuantity1 = new UnitQuantity(1.0, FEET);
         double result3 = unitMeasurement.addUnit(unitQuantity, unitQuantity1);
@@ -202,7 +195,6 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenOneInchAndTwoPointFiveCm_WhenAdded_ShouldReturnEquals() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
         UnitQuantity unitQuantity = new UnitQuantity(2.0, INCH);
         UnitQuantity unitQuantity1 = new UnitQuantity(2.5, CENTIMETER);
         double result3 = unitMeasurement.addUnit(unitQuantity, unitQuantity1);
@@ -226,13 +218,12 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenGallonAndLitre_AfterAdding_shouldEqualToLitre() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
         UnitQuantity value1 = new UnitQuantity(1.0, GALLON);
         UnitQuantity value2 = new UnitQuantity(3.78, LITRES);
         UnitQuantity value3 = new UnitQuantity(7.57, LITRES);
         double value4 = value3.quantity;
         double result3 = unitMeasurement.addUnit(value1, value2);
-        Assert.assertEquals(result3, value4,0.1);
+        Assert.assertEquals(result3, value4, 0.1);
     }
 
     @Test
@@ -253,12 +244,25 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenOneTonneAndThousandGm_WhenAdded_ShouldEqualTo1001Kg() throws QuantityMeasurementException {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
         UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
         UnitQuantity value2 = new UnitQuantity(1000.0, GRAMS);
         UnitQuantity value3 = new UnitQuantity(1001.0, KILOGRAMS);
         double value4 = value3.quantity;
         double result3 = unitMeasurement.addUnit(value1, value2);
-        Assert.assertEquals(result3, value4,0.1);
+        Assert.assertEquals(result3, value4, 0.1);
     }
+
+    @Test
+    public void givenOneTonne2_WhenEqualToThousandKg_ShouldReturnTrue() throws QuantityMeasurementException {
+        UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
+        UnitQuantity value2 = new UnitQuantity(1000.0, KILOGRAMS);
+        Assert.assertEquals(value1.quantity, value2.quantity);
+    }
+
+    @Test
+    public void givenFahrenheitAndCelsius_WhenEqual_ShouldReturnTrue() {
+        double result = unitMeasurement.convertTemperature(212);
+        Assert.assertEquals(100,result,0.0);
+    }
+
 }

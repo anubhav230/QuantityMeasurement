@@ -20,9 +20,5 @@ public enum Unit {
         this.value = value;
         this.type = type;
     }
-
-    public Double unitConversion( double value ,Unit unit) {
-        double result = value * unit.value;
-        return result;
-    }
 }
+

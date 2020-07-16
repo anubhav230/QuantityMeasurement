@@ -7,29 +7,20 @@ import java.util.Objects;
 public class UnitQuantity {
     public Double quantity;
     public Type type;
-    public Unit unit;
 
 
-    public Double unitConversion(double value, Unit unit) {
-        double result = value * unit.value;
-        return result;
-    }
+    UnitMeasurement unitMeasurement = new UnitMeasurement();
 
     public UnitQuantity(Double quantity, Unit unit) throws QuantityMeasurementException {
         try {
-            this.quantity = unitConversion(quantity, unit);
+            this.quantity = unitMeasurement.unitConversion(quantity, unit);
             this.type = unit.type;
-        }catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             throw new QuantityMeasurementException("Null value", QuantityMeasurementException
                     .ExceptionType.NULL_VALUE);
         }
 
     }
-
-//    public UnitQuantity(Double quantity, Unit unit) {
-//        this.quantity = unit.unitConversion(quantity,unit);
-//        this.type = unit.type;
-//    }
 
     @Override
     public boolean equals(Object o) {
@@ -40,8 +31,5 @@ public class UnitQuantity {
         return Objects.equals(quantity, that.quantity) &&
                 type == that.type;
     }
-
-
-
 }
 
