@@ -241,4 +241,14 @@ public class QuantityMeasurementTest {
         UnitQuantity value2 = new UnitQuantity(1000.0, GRAMS);
         Assert.assertEquals(value1.quantity, value2.quantity);
     }
+
+
+    @Test
+    public void givenOneTonne_WhenEqualToThousandKg_ShouldReturnTrue() throws QuantityMeasurementException {
+        UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
+        UnitQuantity value2 = new UnitQuantity(1000.0, KILOGRAMS);
+        Assert.assertEquals(value1.quantity, value2.quantity);
+    }
+
+
 }
