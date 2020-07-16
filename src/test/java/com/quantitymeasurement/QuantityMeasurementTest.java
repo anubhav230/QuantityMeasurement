@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.quantitymeasurement.models.Unit.*;
+import static com.quantitymeasurement.enums.Unit.*;
 
 public class QuantityMeasurementTest {
 
@@ -62,8 +62,6 @@ public class QuantityMeasurementTest {
             System.out.println(e.getMessage());
         }
     }
-
-    //test case for inch
 
     @Test
     public void givenZeroInch_WhenEqual_ShouldBeEqual() throws QuantityMeasurementException {
@@ -286,13 +284,18 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenGallonAndLitre_AfterAdding_shouldEqualToLitre() throws QuantityMeasurementException {
-        UnitQuantity value1 = new UnitQuantity(1.0, GALLON);
-        UnitQuantity value2 = new UnitQuantity(3.78, LITRES);
-        UnitQuantity value3 = new UnitQuantity(7.57, LITRES);
-        double value4 = value3.quantity;
-        double result3 = unitMeasurement.addUnit(value1, value2);
-        Assert.assertEquals(result3, value4, 0.1);
+    public void givenGallonAndLitre_AfterAdding_shouldEqualToGivenLitre() {
+        try {
+            UnitQuantity value1 = new UnitQuantity(1.0, FEET);
+            UnitQuantity value2 = new UnitQuantity(3.78, LITRES);
+            UnitQuantity value3 = new UnitQuantity(7.57, LITRES);
+            double value4 = value3.quantity;
+            double result3 = unitMeasurement.addUnit(value1, value2);
+            Assert.assertEquals(result3, value4, 0.1);
+        }  catch (QuantityMeasurementException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Test

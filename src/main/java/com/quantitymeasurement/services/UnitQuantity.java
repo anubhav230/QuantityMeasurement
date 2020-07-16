@@ -1,8 +1,8 @@
 package com.quantitymeasurement.services;
 
 import com.quantitymeasurement.exception.QuantityMeasurementException;
-import com.quantitymeasurement.models.Type;
-import com.quantitymeasurement.models.Unit;
+import com.quantitymeasurement.enums.Type;
+import com.quantitymeasurement.enums.Unit;
 
 import java.util.Objects;
 

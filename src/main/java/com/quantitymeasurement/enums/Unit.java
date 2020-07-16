@@ -1,6 +1,6 @@
-package com.quantitymeasurement.models;
+package com.quantitymeasurement.enums;
 
-import static com.quantitymeasurement.models.Type.*;
+import static com.quantitymeasurement.enums.Type.*;
 
 public enum Unit {
 
