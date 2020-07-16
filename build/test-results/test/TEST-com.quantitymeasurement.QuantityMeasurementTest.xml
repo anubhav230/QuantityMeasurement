@@ -1,43 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.quantitymeasurement.QuantityMeasurementTest" tests="34" skipped="0" failures="0" errors="0" timestamp="2020-07-16T20:32:36" hostname="LAPTOP-GT6OG951" time="0.017">
+<testsuite name="com.quantitymeasurement.QuantityMeasurementTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-16T20:40:42" hostname="LAPTOP-GT6OG951" time="0.004">
   <properties/>
-  <testcase name="givenTwoReferencesOfSameClass_ShouldCompareReference" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
-  <testcase name="givenOneInchAndTwoPointFiveCm_WhenAdded_ShouldReturnEquals" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
-  <testcase name="givenValueOfInchAndYard_WhenSameAfterConverting_ShouldBeEqualAfterConverting" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenOneLitreAndML_WhenEqual_ShouldReturnEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
-  <testcase name="givenSameInch_ShouldBeEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenOneFEETAndOneFeet_WhenAdded_ShouldReturnEquals" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenOneTonneAndThousandGm_WhenAdded_ShouldEqualTo1001Kg" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenOneGallonAndLitre_WhenEqual_shouldReturnTrue" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenOneFeetAndOneYard_WhenEqual_ShouldReturnFalse" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
-  <testcase name="givenFeetAndYard_ShouldBeEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenOneTonne_WhenEqualToThousandKg_ShouldReturnTrue" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenTwoInchAndTwoInch_WhenAdded_ShouldReturnEquals" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenDifferentTypeOfClass_ShouldNotEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenValueOfInchAndYard2_ShouldBeEqualAfterConverting" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenFahrenheitAndCelsius_WhenEqual_ShouldReturnTrue" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenEqualCentimeter_ShouldBeEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
-  <testcase name="givenSameType_WhenSameType_ShouldNotEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenDifferentValueOfSameUnit_WhenNotEqual_ShouldNotEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenOneKgAndGram_WhenEqual_ShouldReturnTrue" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
-  <testcase name="givenDifferentReferences_WhenNotEqual_ShouldCompareReference" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenNullValue_ShouldThrowException" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.003"/>
-  <testcase name="givenOneFEETAndTwoInch_WhenAdded_ShouldReturnEquals" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenNullValue_ShouldThrowQuantityMeasurementException" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenNullValueForCentimeter_ShouldThrowQuantityMeasurementException" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenOneTonne2_WhenNotEqualToThousandKg_ShouldReturnFalse" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
-  <testcase name="givenSameInchReference_ShouldBeEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenOneTonne2_WhenEqualToThousandKg_ShouldReturnTrue" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenDifferentTypeForInch_ShouldNotEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenSameUnit_WhenEqual_ShouldReturnTrue" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
-  <testcase name="givenThreeFeetAndOneYard_WhenEqual_ShouldReturnTrue" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenTwoInchAndFiveCentimeter_ShouldBeEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenZeroInchAndOneYard_WhenNotEqual_ShouldNotBeEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <testcase name="givenGallonAndLitre_AfterAdding_shouldEqualToLitre" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.001"/>
-  <testcase name="givenZeroInch_WhenEqual_ShouldBeEqual" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.0"/>
-  <system-out><![CDATA[Null value
-Null value
-Null value
+  <testcase name="givenTwoIncompatibleValues_WhenNotEqual_ShouldThrowException" classname="com.quantitymeasurement.QuantityMeasurementTest" time="0.004"/>
+  <system-out><![CDATA[Values are not compatible
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

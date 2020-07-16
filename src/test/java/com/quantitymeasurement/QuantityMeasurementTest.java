@@ -4,13 +4,16 @@ import com.quantitymeasurement.exception.QuantityMeasurementException;
 import com.quantitymeasurement.services.UnitMeasurement;
 import com.quantitymeasurement.services.UnitQuantity;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import static com.quantitymeasurement.models.Unit.*;
 
 public class QuantityMeasurementTest {
 
-    UnitMeasurement unitMeasurement = new UnitMeasurement();
+    UnitMeasurement unitMeasurement;
+    @Before
+    public void startup() { unitMeasurement = new UnitMeasurement(); }
 
     @Test
     public void givenSameUnit_WhenEqual_ShouldReturnTrue() {
@@ -341,6 +344,18 @@ public class QuantityMeasurementTest {
     public void givenOneTonne2_WhenNotEqualToThousandKg_ShouldReturnFalse() {
         try {
             UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
+            UnitQuantity value2 = new UnitQuantity(1000.0, KILOGRAMS);
+            boolean result = value1.compare(value2);
+            Assert.assertTrue(result);
+        } catch (QuantityMeasurementException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenTwoIncompatibleValues_WhenNotEqual_ShouldThrowException() {
+        try {
+            UnitQuantity value1 = new UnitQuantity(1.0, FEET);
             UnitQuantity value2 = new UnitQuantity(1000.0, KILOGRAMS);
             boolean result = value1.compare(value2);
             Assert.assertTrue(result);
