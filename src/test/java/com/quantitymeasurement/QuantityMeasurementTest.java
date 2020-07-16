@@ -251,4 +251,14 @@ public class QuantityMeasurementTest {
     }
 
 
+    @Test
+    public void givenOneTonneAndThousandGm_WhenAdded_ShouldEqualTo1001Kg() throws QuantityMeasurementException {
+        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
+        UnitQuantity value2 = new UnitQuantity(1000.0, GRAMS);
+        UnitQuantity value3 = new UnitQuantity(1001.0, KILOGRAMS);
+        double value4 = value3.quantity;
+        double result3 = unitMeasurement.addUnit(value1, value2);
+        Assert.assertEquals(result3, value4,0.1);
+    }
 }
