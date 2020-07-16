@@ -25,10 +25,4 @@ public class UnitMeasurement {
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
-
-    //
-//    public double convertTemperature(double value) {
-//        double convertedValue = (value - 32.0) * (5d / 9d);
-//        return convertedValue;
-//    }
 }

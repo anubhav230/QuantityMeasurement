@@ -369,4 +369,10 @@ public class QuantityMeasurementTest {
         UnitQuantity value1 = new UnitQuantity(212.0, FAHRENHEIT);
         Assert.assertEquals(100.0, value1.quantity, 0.0);
     }
+
+    @Test
+    public void givenCelsiusAndFahrenheit_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
+        UnitQuantity value1 = new UnitQuantity(100.0, CELSIUS);
+        Assert.assertEquals(212.0, value1.quantity, 0.0);
+    }
 }
