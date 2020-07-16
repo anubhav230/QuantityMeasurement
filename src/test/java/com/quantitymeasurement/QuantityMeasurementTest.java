@@ -12,8 +12,11 @@ import static com.quantitymeasurement.enums.Unit.*;
 public class QuantityMeasurementTest {
 
     UnitMeasurement unitMeasurement;
+
     @Before
-    public void startup() { unitMeasurement = new UnitMeasurement(); }
+    public void startup() {
+        unitMeasurement = new UnitMeasurement();
+    }
 
     @Test
     public void givenSameUnit_WhenEqual_ShouldReturnTrue() {
@@ -213,16 +216,10 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenEqualCentimeter_ShouldBeEqual() {
-        try {
-            UnitQuantity value1 = new UnitQuantity(0.0, CENTIMETER);
+    public void givenEqualCentimeter_ShouldBeEqual() throws QuantityMeasurementException {
+        UnitQuantity value1 = new UnitQuantity(0.0, CENTIMETER);
             UnitQuantity value2 = new UnitQuantity(1.0, CENTIMETER);
-            boolean result = value1.compare(value2);
-            Assert.assertEquals(false, result);
-        } catch (QuantityMeasurementException e) {
-            System.out.println(e.getMessage());
-        }
-
+            Assert.assertNotEquals(value1, value2);
     }
 
     @Test
@@ -258,7 +255,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenOneGallonAndLitre_WhenEqual_shouldReturnTrue()  {
+    public void givenOneGallonAndLitre_WhenEqual_shouldReturnTrue() {
         try {
             UnitQuantity value1 = new UnitQuantity(1.0, GALLON);
             UnitQuantity value2 = new UnitQuantity(3.78, LITRES);
@@ -284,18 +281,13 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenGallonAndLitre_AfterAdding_shouldEqualToGivenLitre() {
-        try {
-            UnitQuantity value1 = new UnitQuantity(1.0, FEET);
-            UnitQuantity value2 = new UnitQuantity(3.78, LITRES);
-            UnitQuantity value3 = new UnitQuantity(7.57, LITRES);
-            double value4 = value3.quantity;
-            double result3 = unitMeasurement.addUnit(value1, value2);
-            Assert.assertEquals(result3, value4, 0.1);
-        }  catch (QuantityMeasurementException e) {
-            System.out.println(e.getMessage());
-        }
-
+    public void givenGallonAndLitre_AfterAdding_shouldEqualToGivenLitre() throws QuantityMeasurementException {
+        UnitQuantity value1 = new UnitQuantity(1.0, GALLON);
+        UnitQuantity value2 = new UnitQuantity(3.78, LITRES);
+        UnitQuantity value3 = new UnitQuantity(7.57, LITRES);
+        double value4 = value3.quantity;
+        double result3 = unitMeasurement.addUnit(value1, value2);
+        Assert.assertEquals(result3, value4, 0.1);
     }
 
     @Test
@@ -322,12 +314,13 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenOneTonneAndThousandGm_WhenAdded_ShouldEqualTo1001Kg() throws QuantityMeasurementException {
-        UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
-        UnitQuantity value2 = new UnitQuantity(1000.0, GRAMS);
-        UnitQuantity value3 = new UnitQuantity(1001.0, KILOGRAMS);
-        double value4 = value3.quantity;
-        double result3 = unitMeasurement.addUnit(value1, value2);
-        Assert.assertEquals(result3, value4, 0.1);
+            UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
+            UnitQuantity value2 = new UnitQuantity(1000.0, GRAMS);
+            UnitQuantity value3 = new UnitQuantity(1001.0, KILOGRAMS);
+            double value4 = value3.quantity;
+            double result3 = unitMeasurement.addUnit(value1, value2);
+            Assert.assertEquals(result3, value4, 0.1);
+
     }
 
     @Test
@@ -356,7 +349,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenTwoIncompatibleValues_WhenNotEqual_ShouldThrowException() {
+    public void givenTwoIncompatibleValues_WhenComparing_ShouldThrowException() {
         try {
             UnitQuantity value1 = new UnitQuantity(1.0, FEET);
             UnitQuantity value2 = new UnitQuantity(1000.0, KILOGRAMS);
@@ -365,6 +358,21 @@ public class QuantityMeasurementTest {
         } catch (QuantityMeasurementException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    public void givenTwoIncompatibleValues_WhenAdding_ShouldThrowException() {
+        try {
+            UnitQuantity value1 = new UnitQuantity(1.0, FEET);
+            UnitQuantity value2 = new UnitQuantity(1000.0, GRAMS);
+            UnitQuantity value3 = new UnitQuantity(1001.0, KILOGRAMS);
+            double value4 = value3.quantity;
+            double result3 = unitMeasurement.addUnit(value1, value2);
+            Assert.assertEquals(result3, value4, 0.1);
+        } catch (QuantityMeasurementException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Test

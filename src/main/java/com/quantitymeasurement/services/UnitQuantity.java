@@ -3,10 +3,12 @@ package com.quantitymeasurement.services;
 import com.quantitymeasurement.exception.QuantityMeasurementException;
 import com.quantitymeasurement.enums.Type;
 import com.quantitymeasurement.enums.Unit;
+import com.quantitymeasurement.utility.Utility;
 
 import java.util.Objects;
 
 public class UnitQuantity  {
+    Utility utility = new Utility();
     public Double quantity;
     public Type type;
 
