@@ -263,7 +263,7 @@ public class QuantityMeasurementTest {
     @Test
     public void givenOneTonne2_WhenNotEqualToThousandKg_ShouldReturnFalse() {
         try {
-            UnitQuantity value1 = new UnitQuantity(1.0, FEET);
+            UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
             UnitQuantity value2 = new UnitQuantity(1000.0, KILOGRAMS);
             boolean result = value1.compare(value2);
             Assert.assertTrue(result);
@@ -273,8 +273,8 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenFahrenheitAndCelsius_WhenEqual_ShouldReturnTrue() {
-        double result = unitMeasurement.convertTemperature(212);
-        Assert.assertEquals(100, result, 0.0);
+    public void givenFahrenheitAndCelsius_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
+        UnitQuantity value1 = new UnitQuantity(212.0, FAHRENHEIT);
+        Assert.assertEquals(100.0, value1.quantity,0.0);
     }
 }

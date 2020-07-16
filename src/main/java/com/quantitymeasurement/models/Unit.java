@@ -13,8 +13,8 @@ public enum Unit {
     KILOGRAMS(1.0, WEIGHT), GRAMS(0.001, WEIGHT),
     TONNE(1000.0, WEIGHT),
 
-    CELSIUS(1.8,TEMPERATURE),
-    FAHRENHEIT(1.0,TEMPERATURE);
+    CELSIUS(5.0/9.0,TEMPERATURE),
+    FAHRENHEIT(9.0/5.0,TEMPERATURE);
 
     public Type type;
     public Double value;

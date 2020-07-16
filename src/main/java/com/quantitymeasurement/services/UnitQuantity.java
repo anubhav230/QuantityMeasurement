@@ -22,14 +22,11 @@ public class UnitQuantity  {
         }
     }
 
-
-
     public boolean compare(UnitQuantity value2) throws QuantityMeasurementException {
         if (this.type != value2.type)
             throw new QuantityMeasurementException("Values are not compatible", QuantityMeasurementException
                     .ExceptionType.COMPATIBILITY_FAILURE);
         return Double.compare(this.quantity, value2.quantity) == 0;
-        //return false;
     }
 
     @Override
