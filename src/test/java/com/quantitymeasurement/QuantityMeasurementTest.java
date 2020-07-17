@@ -1,7 +1,7 @@
 package com.quantitymeasurement;
 
 import com.quantitymeasurement.exception.QuantityMeasurementException;
-import com.quantitymeasurement.services.UnitMeasurement;
+import com.quantitymeasurement.services.AddUnit;
 import com.quantitymeasurement.services.UnitQuantity;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,23 +11,18 @@ import static com.quantitymeasurement.enums.Unit.*;
 
 public class QuantityMeasurementTest {
 
-    UnitMeasurement unitMeasurement;
+    AddUnit unitMeasurement;
 
     @Before
     public void startup() {
-        unitMeasurement = new UnitMeasurement();
+        unitMeasurement = new AddUnit();
     }
 
     @Test
-    public void givenSameUnit_WhenEqual_ShouldReturnTrue() {
-        try {
-            UnitQuantity value1 = new UnitQuantity(0.0, INCH);
-            UnitQuantity value2 = new UnitQuantity(0.0, INCH);
-            boolean result = value1.compare(value2);
-            Assert.assertEquals(true, result);
-        } catch (QuantityMeasurementException e) {
-            System.out.println(e.getMessage());
-        }
+    public void givenSameUnit_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
+        UnitQuantity value1 = new UnitQuantity(0.0, INCH);
+        UnitQuantity value2 = new UnitQuantity(0.0, INCH);
+        Assert.assertEquals(value1, value2);
     }
 
     @Test
@@ -41,15 +36,15 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenDifferentReferences_WhenNotEqual_ShouldCompareReference() {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
-        UnitMeasurement unitMeasurement2 = new UnitMeasurement();
+        AddUnit unitMeasurement = new AddUnit();
+        AddUnit unitMeasurement2 = new AddUnit();
         Assert.assertNotEquals(unitMeasurement, equals(unitMeasurement2));
     }
 
 
     @Test
     public void givenSameType_WhenSameType_ShouldNotEqual() {
-        UnitMeasurement type1 = new UnitMeasurement();
+        AddUnit type1 = new AddUnit();
         Double type2 = 0.0;
         Assert.assertNotEquals(type1, type2);
     }
@@ -96,13 +91,13 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenSameInchReference_ShouldBeEqual() {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        AddUnit unitMeasurement = new AddUnit();
         Assert.assertEquals(unitMeasurement, unitMeasurement);
     }
 
     @Test
     public void givenDifferentTypeForInch_ShouldNotEqual() {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        AddUnit unitMeasurement = new AddUnit();
         String string = "";
         Assert.assertNotEquals(unitMeasurement.getClass(), string.getClass());
     }
@@ -204,13 +199,13 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenTwoReferencesOfSameClass_ShouldCompareReference() {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        AddUnit unitMeasurement = new AddUnit();
         Assert.assertNotEquals(unitMeasurement, equals(unitMeasurement));
     }
 
     @Test
     public void givenDifferentTypeOfClass_ShouldNotEqual() {
-        UnitMeasurement unitMeasurement = new UnitMeasurement();
+        AddUnit unitMeasurement = new AddUnit();
         String string = "";
         Assert.assertNotEquals(unitMeasurement, string);
     }
@@ -218,8 +213,8 @@ public class QuantityMeasurementTest {
     @Test
     public void givenEqualCentimeter_ShouldBeEqual() throws QuantityMeasurementException {
         UnitQuantity value1 = new UnitQuantity(0.0, CENTIMETER);
-            UnitQuantity value2 = new UnitQuantity(1.0, CENTIMETER);
-            Assert.assertNotEquals(value1, value2);
+        UnitQuantity value2 = new UnitQuantity(1.0, CENTIMETER);
+        Assert.assertNotEquals(value1, value2);
     }
 
     @Test
@@ -314,12 +309,12 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenOneTonneAndThousandGm_WhenAdded_ShouldEqualTo1001Kg() throws QuantityMeasurementException {
-            UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
-            UnitQuantity value2 = new UnitQuantity(1000.0, GRAMS);
-            UnitQuantity value3 = new UnitQuantity(1001.0, KILOGRAMS);
-            double value4 = value3.quantity;
-            double result3 = unitMeasurement.addUnit(value1, value2);
-            Assert.assertEquals(result3, value4, 0.1);
+        UnitQuantity value1 = new UnitQuantity(1.0, TONNE);
+        UnitQuantity value2 = new UnitQuantity(1000.0, GRAMS);
+        UnitQuantity value3 = new UnitQuantity(1001.0, KILOGRAMS);
+        double value4 = value3.quantity;
+        double result3 = unitMeasurement.addUnit(value1, value2);
+        Assert.assertEquals(result3, value4, 0.1);
 
     }
 

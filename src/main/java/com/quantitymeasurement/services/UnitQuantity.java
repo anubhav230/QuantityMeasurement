@@ -3,20 +3,16 @@ package com.quantitymeasurement.services;
 import com.quantitymeasurement.exception.QuantityMeasurementException;
 import com.quantitymeasurement.enums.Type;
 import com.quantitymeasurement.enums.Unit;
-import com.quantitymeasurement.utility.Utility;
 
 import java.util.Objects;
 
 public class UnitQuantity  {
-    Utility utility = new Utility();
     public Double quantity;
     public Type type;
 
-    UnitMeasurement unitMeasurement = new UnitMeasurement();
-
     public UnitQuantity(Double quantity, Unit unit) throws QuantityMeasurementException {
         try {
-            this.quantity = unitMeasurement.unitConversion(quantity, unit);
+            this.quantity = unit.unitConversion(quantity, unit);
             this.type = unit.type;
         } catch (NullPointerException e) {
             throw new QuantityMeasurementException("Null value", QuantityMeasurementException
